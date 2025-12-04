@@ -61,7 +61,7 @@ jobs:
             sudo docker stop lacrei-app || true
             sudo docker rm lacrei-app || true
             sudo docker pull ${{ secrets.DOCKER_USERNAME }}/lacrei-app:latest
-            sudo docker run -d --name lacrei-app --restart always -p 80:3000 -e NODE_ENV=staging ${{ secrets.DOCKER_USERNAME }}/lacrei-app:latest
+            sudo docker run -d --name lacrei-app --restart always -p 3000:3000 -e NODE_ENV=staging ${{ secrets.DOCKER_USERNAME }}/lacrei-app:latest
 
   deploy-production:
     needs: deploy-staging
@@ -96,4 +96,4 @@ jobs:
             sudo docker stop lacrei-app || true
             sudo docker rm lacrei-app || true
             sudo docker pull ${{ secrets.DOCKER_USERNAME }}/lacrei-app:latest
-            sudo docker run -d --name lacrei-app --restart always -p 80:3000 -e NODE_ENV=production ${{ secrets.DOCKER_USERNAME }}/lacrei-app:latest
+            sudo docker run -d --name lacrei-app --restart always -p 3000:3000 -e NODE_ENV=production ${{ secrets.DOCKER_USERNAME }}/lacrei-app:latest
